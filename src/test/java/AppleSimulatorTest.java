@@ -41,7 +41,7 @@ public class AppleSimulatorTest {
                 .setDeviceName("iPhone SE (3rd generation)")
                 .setPlatformVersion("16.4")
                 .setAutomationName(AutomationName.IOS_XCUI_TEST)
-                .setApp("/Users/krupagj/Library/Developer/Xcode/DerivedData//TrainingApp-ezurjbqfgmchctbniwlgxnxcsjbt/Build/Products/Debug-iphonesimulator/TrainingApp.app");
+                .setApp("ios/ios/build/out/Build/Products/Debug-iphonesimulator/TrainingApp.app");
 
         driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
