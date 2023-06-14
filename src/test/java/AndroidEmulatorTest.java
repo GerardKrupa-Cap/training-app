@@ -21,7 +21,6 @@ public class AndroidEmulatorTest {
     @BeforeClass
     public static void setupClass() throws MalformedURLException {
         appiumDriverLocalService = new AppiumServiceBuilder()
-                .withArgument(GeneralServerFlag.BASEPATH, "/wd/hub")
                 .usingPort(4723)
                 .build();
         appiumDriverLocalService.start();
@@ -42,7 +41,7 @@ public class AndroidEmulatorTest {
                 .setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2)
                 .setApp("android/app/build/outputs/apk/debug/app-debug.apk");
 
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 

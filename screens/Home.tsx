@@ -6,7 +6,7 @@ import {SharedStyles} from '../components/SharedStyles';
 function Home({navigation}): JSX.Element {
   const [shown, setShown] = useState(true);
 
-  function doSomething() {
+  function toggleText() {
     setShown(!shown);
   }
 
@@ -20,7 +20,7 @@ function Home({navigation}): JSX.Element {
       {!shown && <Text style={styles.message}>Still nothing to see here</Text>}
       <TouchableOpacity
         style={SharedStyles.button}
-        onPress={doSomething}
+        onPress={toggleText}
         accessible={true}
         accessibilityLabel="Click here to change the text"
         testID="changeText">
