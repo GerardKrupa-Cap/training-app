@@ -1,9 +1,17 @@
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Pressable,
+  Button,
+} from 'react-native';
 import {useState} from 'react';
 import React from 'react';
 import {SharedStyles} from '../components/SharedStyles';
 import StandardHeader from '../components/StandardHeader';
 import StandardFooter from '../components/StandardFooter';
+import FeatureButton from '../components/FeatureButton';
 
 function Home({navigation}): JSX.Element {
   const [shown, setShown] = useState(true);
@@ -24,17 +32,8 @@ function Home({navigation}): JSX.Element {
         {!shown && (
           <Text style={styles.message}>Still nothing to see here</Text>
         )}
-        <TouchableOpacity
-          style={SharedStyles.button}
-          onPress={toggleText}
-          accessible={true}
-          accessibilityLabel="Click here to change the text"
-          testID="changeText">
-          <Text style={styles.message}>Do not click here</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={SharedStyles.button} onPress={navigateAway}>
-          <Text style={styles.message}>Bye bye</Text>
-        </TouchableOpacity>
+        <FeatureButton message="Do not click here" onPress={toggleText} testID="changeText" accessibilityLabel="Click here to change the text" />
+        <FeatureButton message="Bye bye" onPress={navigateAway} testID="navigateAway" accessibilityLabel="Click here to go to the other screen" />
       </View>
       <StandardFooter />
     </View>

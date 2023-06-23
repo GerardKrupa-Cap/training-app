@@ -2,6 +2,7 @@ import {Text, View} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {SharedStyles} from '../components/SharedStyles';
+import FeatureButton from '../components/FeatureButton';
 
 function Other({navigation}): JSX.Element {
   function navigateAway() {
@@ -10,9 +11,7 @@ function Other({navigation}): JSX.Element {
 
   return (
     <View style={SharedStyles.screenContainer}>
-      <TouchableOpacity style={SharedStyles.button} onPress={navigateAway}>
-        <Text style={SharedStyles.buttonText}>Go Home</Text>
-      </TouchableOpacity>
+      <FeatureButton message="Go Home" onPress={navigateAway} testID="navigateHome" accessibilityLabel="Click here to go back to the home screen" />
     </View>
   );
 }

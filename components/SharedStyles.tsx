@@ -9,9 +9,45 @@ import {
 export const colours = {
   $charcoal: '#323232',
   $black: '#1f1f1f',
+
   $darkgrey: '#666666',
   $midgrey: '#999999',
   $lightgrey: '#b5b5b5',
+
+  $lightgrey_dark: '#cccccc',
+  $lightgrey_mid: '#dddddd',
+  $lightgrey_semi: '#e5e5e5',
+  $lightgrey_light: '#eeeeee',
+  $lightgrey_offwhite: '#f1f1f1',
+
+  $darkred: '#7e0a0e',
+  $red: '#aa1111',
+  $brightred: '#d81f1f',
+  $darkpalered: '#d87777',
+  $palered: '#fea8a9',
+  $whitered: '#ffe4e5',
+
+  $darkblue: '#1f446d',
+  $blue: '#0360a6',
+  $brightblue: '#4c93ff',
+  $lightblue: '#3b7dc5',
+  $paleblue: '#99ccff',
+
+  $darkgreen: '#3b510d',
+  $green: '#019e1e',
+  $lightgreen: '#01b723',
+  $whitegreen: '#cdf7d4',
+
+  $darkpurple: '#772cfe',
+  $plum: '#632a5d',
+  $purple: '#a82b71',
+
+  $orange: '#ff8000',
+  $paleorange: '#ffdab5',
+
+  $yellow: '#ffd530',
+  $paleyellow: '#fff5ce',
+
   $white: '#ffffff',
 };
 
@@ -45,22 +81,5 @@ export const SharedStyles = StyleSheet.create({
   },
   body: {
     flex: 10,
-  },
-  button: {
-    color: systemColour('link', '?android:attr/textColor', 'white'),
-    backgroundColor: systemColour(
-      'systemTealColor',
-      '@android:color/holo_blue_bright',
-      'blue',
-    ),
-    marginHorizontal: 10,
-    marginVertical: 10,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    textAlign: 'center',
   },
 });
