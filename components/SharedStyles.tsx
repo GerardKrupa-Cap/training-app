@@ -80,6 +80,16 @@ export const SharedStyles = StyleSheet.create({
     flexDirection: 'column',
   },
   body: {
-    flex: 10,
+    flex: 1,
+  },
+  h3: {
+    fontSize: vh(5),
+    color: colours.$black,
+    fontWeight: 'bold',
+  },
+  h4: {
+    fontSize: vh(3),
+    color: colours.$black,
+    fontWeight: 'bold',
   },
 });

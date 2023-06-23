@@ -27,20 +27,6 @@ const styles = StyleSheet.create({
   },
 });
 
-/*
-        <Pressable
-          style={({pressed}) => pressed ? SharedStyles.featureButtonPressed : SharedStyles.featureButton}
-          onPress={toggleText}
-          accessible={true}
-          accessibilityLabel="Click here to change the text"
-          testID="changeText">
-            {({pressed}) => (
-              pressed ? (<Text style={SharedStyles.featureButtonTextPressed}>Do not click here</Text>) : (<Text style={SharedStyles.featureButtonText}>Do not click here</Text>)
-            )
-          }
-        </Pressable>
-        */
-
 function FeatureButton({message, onPress, testID, accessibilityLabel}): JSX.Element {
   return (
     <Pressable
