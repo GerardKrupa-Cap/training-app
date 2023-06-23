@@ -19,7 +19,7 @@ function App(): JSX.Element {
             <Stack.Screen
               name="Home"
               component={Home}
-              options={{headerShown: true}}
+              options={{headerShown: false}}
             />
             <Stack.Screen
               name="Other"
