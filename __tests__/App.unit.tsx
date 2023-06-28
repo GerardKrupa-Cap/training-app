@@ -46,9 +46,9 @@ it('displays a random image when I select a tag', async () => {
 
   await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
 
-  const button = component.getByText('one >');
+  const button = component.getByTestId('test:id/one');
   fireEvent.press(button);
-  expect(component.queryAllByTestId('taggedImage')).toHaveLength(1);
-  const image = component.getByTestId('taggedImage');
+  expect(component.queryAllByTestId('test:id/tagged-image')).toHaveLength(1);
+  const image = component.getByTestId('test:id/tagged-image');
   expect(image.props.source.uri).toBe('https://cataas.com/c/one');
 });

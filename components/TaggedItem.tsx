@@ -16,7 +16,7 @@ function TaggedItem({baseURL, tag}): JSX.Element {
   const imageUrl = `${baseURL}c/${encodedTag}`;
   return (
     <Image
-      testID="taggedImage"
+      testID="test:id/tagged-image"
       source={{uri: imageUrl}}
       style={styles.taggedImage}
     />

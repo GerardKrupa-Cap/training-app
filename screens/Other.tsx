@@ -30,7 +30,7 @@ function Other({route, navigation}): JSX.Element {
         <FeatureButton
           message="Go Home"
           onPress={navigateAway}
-          testID="navigateHome"
+          testID="test:id/navigate-home"
           accessibilityLabel="Click here to go back to the home screen"
         />
 

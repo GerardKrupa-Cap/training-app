@@ -47,7 +47,7 @@ function TagList({baseURL, onSelect}): JSX.Element {
         message={`${item} >`}
         onPress={() => onSelect(item)}
         accessibilityLabel={`Select the tag named ${item}`}
-        testID={item}
+        testID={`test:id/${item}`}
       />
     </View>
   );

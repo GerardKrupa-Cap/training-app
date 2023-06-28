@@ -53,25 +53,18 @@ public class AndroidEmulatorTest {
     }
 
     @Test
-    public void theButtonChangesTheText() {
-        Assert.assertNotNull(driver.findElement(By.xpath("//*[@text='Nothing to see here']")));
-        WebElement button = driver.findElement(By.xpath("//*[@text='Do not click here']"));
-        button.click();
-        Assert.assertNotNull(driver.findElement(By.xpath("//*[@text='Still nothing to see here']")));
-    }
-
-    @Test
     public void theButtonsNavigate() {
-        driver.findElement(By.xpath("//*[@text='Bye bye']")).click();
-        driver.findElement(By.xpath("//*[@text='Go Home']")).click();
-        Assert.assertNotNull(driver.findElement(By.xpath("//*[@text='Nothing to see here']")));
+        driver.findElement(By.id("test:id/Beer")).click();
+        Assert.assertNotNull(driver.findElement(By.id("test:id/tagged-image")));
+        driver.findElement(By.id("test:id/navigate-home")).click();
+        Assert.assertNotNull(driver.findElement(By.id("test:id/Beer")));
     }
 
     @Test
     public void backGoesBackHome() {
-        driver.findElement(By.xpath("//*[@text='Bye bye']")).click();
-        Assert.assertNotNull(driver.findElement(By.xpath("//*[@text='Go Home']")));
+        driver.findElement(By.id("test:id/Beer")).click();
+        Assert.assertNotNull(driver.findElement(By.id("test:id/tagged-image")));
         driver.navigate().back();
-        Assert.assertNotNull(driver.findElement(By.xpath("//*[@text='Nothing to see here']")));
+        Assert.assertNotNull(driver.findElement(By.id("test:id/Beer")));
     }
 }
