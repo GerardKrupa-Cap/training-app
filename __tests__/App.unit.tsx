@@ -7,29 +7,47 @@ import App from '../App';
 
 // Note: test renderer must be required after react-native.
 // import renderer from 'react-test-renderer';
-import {fireEvent, render} from '@testing-library/react-native';
+import {fireEvent, render, waitFor} from '@testing-library/react-native';
 
-it('changes text when I press the button', () => {
+it('has a button for each tag returned', async () => {
+  global.fetch = jest.fn().mockImplementationOnce(() => {
+    return new Promise((resolve, _) => {
+      resolve({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve(['one', 'two', 'three']),
+      });
+    });
+  });
+
   const component = render(<App />);
-  expect(component.queryAllByText('Nothing to see here')).toHaveLength(1);
-  expect(component.queryAllByText('Still nothing to see here')).toHaveLength(0);
 
-  fireEvent.press(component.getByText('Do not click here'));
+  await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
 
-  expect(component.queryAllByText('Nothing to see here')).toHaveLength(0);
-  expect(component.queryAllByText('Still nothing to see here')).toHaveLength(1);
+  expect(component.queryAllByText('one >')).toHaveLength(1);
+  expect(component.queryAllByText('two >')).toHaveLength(1);
+  expect(component.queryAllByText('three >')).toHaveLength(1);
+  expect(component.queryAllByText('four >')).toHaveLength(0);
 });
 
-it('navigates away when I click the bye bye button', () => {
+it('displays a random image when I select a tag', async () => {
+  global.fetch = jest.fn().mockImplementationOnce(() => {
+    return new Promise((resolve, _) => {
+      resolve({
+        ok: true,
+        status: 200,
+        json: () => Promise.resolve(['one', 'two', 'three']),
+      });
+    });
+  });
+
   const component = render(<App />);
-  const button = component.getByText('Bye bye');
+
+  await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+
+  const button = component.getByText('one >');
   fireEvent.press(button);
-  expect(component.queryAllByText('Go Home')).toHaveLength(1);
-});
-
-it('navigates back when I click the go home button', () => {
-  const component = render(<App />);
-  fireEvent.press(component.getByText('Bye bye'));
-  fireEvent.press(component.getByText('Go Home'));
-  expect(component.queryAllByText('Nothing to see here')).toHaveLength(1);
+  expect(component.queryAllByTestId('taggedImage')).toHaveLength(1);
+  const image = component.getByTestId('taggedImage');
+  expect(image.props.source.uri).toBe('https://cataas.com/c/one');
 });
