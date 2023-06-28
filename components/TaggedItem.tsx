@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
   taggedImage: {
     height: vh(40),
     resizeMode: 'contain',
-    marginVertical: vh(5),
+    marginHorizontal: vw(5),
+    marginTop: vw(5),
   },
 });
 
