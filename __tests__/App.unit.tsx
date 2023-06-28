@@ -9,13 +9,13 @@ import App from '../App';
 // import renderer from 'react-test-renderer';
 import {fireEvent, render, waitFor} from '@testing-library/react-native';
 
-it('has a button for each tag returned', async () => {
+it('has a button for each valid tag returned', async () => {
   global.fetch = jest.fn().mockImplementationOnce(() => {
     return new Promise((resolve, _) => {
       resolve({
         ok: true,
         status: 200,
-        json: () => Promise.resolve(['one', 'two', 'three']),
+        json: () => Promise.resolve(['one', 'two', 'three', 'box of frogs']),
       });
     });
   });
@@ -28,6 +28,7 @@ it('has a button for each tag returned', async () => {
   expect(component.queryAllByText('two >')).toHaveLength(1);
   expect(component.queryAllByText('three >')).toHaveLength(1);
   expect(component.queryAllByText('four >')).toHaveLength(0);
+  expect(component.queryAllByText('box of frogs >')).toHaveLength(0);
 });
 
 it('displays a random image when I select a tag', async () => {

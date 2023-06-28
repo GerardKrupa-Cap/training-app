@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
 });
 
 function TagList({baseURL, onSelect}): JSX.Element {
-  const [tags, setTags] = useState(['z', 'a']);
+  const [tags, setTags] = useState([]);
+  const validTags = RegExp('^[a-zA-Z0-9]+$');
 
   useEffect(() => {
     fetch(`${baseURL}/api/tags`)
       .then(response => response.json())
-      .then(data => setTags(data.filter(x => x !== '')));
+      .then(data => setTags(data.filter(x => x.match(validTags))));
   }, [baseURL]);
 
   const renderItem = ({item}) => (
