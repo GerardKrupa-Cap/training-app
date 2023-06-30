@@ -2,7 +2,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colours, vh, vw} from '../components/SharedStyles';
 
-const logo = require('../assets/cat-logo.png');
+import logo from '../assets/cat-logo.png';
 
 const styles = StyleSheet.create({
   header: {

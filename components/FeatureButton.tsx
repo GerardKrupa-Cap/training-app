@@ -1,6 +1,6 @@
 import {Text, StyleSheet, Pressable} from 'react-native';
 import React from 'react';
-import {SharedStyles, colours, vh} from '../components/SharedStyles';
+import {SharedStyles, colours, vh, vw} from '../components/SharedStyles';
 
 const styles = StyleSheet.create({
   button: {
