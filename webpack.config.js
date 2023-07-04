@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const appDirectory = path.resolve(__dirname);
 const {presets, plugins} = require(`${appDirectory}/babel.config.js`);
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const compileNodeModules = [
   // Add every react-native package that needs compiling
   // 'react-native-gesture-handler',
@@ -45,22 +46,6 @@ const imageLoaderConfiguration = {
         },
       },
     },
-    {
-      loader: 'image-webpack-loader',
-      options: {
-        query: {
-          mozjpeg: {
-            progressive: true,
-          },
-          gifsicle: {
-            interlaced: true,
-          },
-          optipng: {
-            optimizationLevel: 7,
-          },
-        },
-      },
-    },
   ],
 };
 
@@ -86,6 +71,31 @@ module.exports = {
       svgLoaderConfiguration,
     ],
   },
+  optimization: {
+    minimizer: [
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.sharpMinify,
+          options: {
+            encodeOptions: {
+              jpeg: {
+                quality: 100,
+              },
+              webp: {
+                lossless: true,
+              },
+              avif: {
+                lossless: true,
+              },
+              png: {},
+              gif: {},
+            },
+          },
+        },
+      }),
+    ],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.html'),
