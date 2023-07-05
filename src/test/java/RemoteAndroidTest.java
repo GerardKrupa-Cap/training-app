@@ -58,21 +58,31 @@ public class RemoteAndroidTest {
 
     @Test
     public void theButtonsNavigate() {
-        driver.label("Selecting Beer tag");
-        driver.findElement(By.id("test:id/Beer")).click();
-        Assert.assertNotNull(driver.findElement(By.id("test:id/tagged-image")));
-        driver.label("Clicking the home button");
-        driver.findElement(By.id("test:id/navigate-home")).click();
+        driver.label("The application starts");
         Assert.assertNotNull(driver.findElement(By.id("test:id/Beer")));
+        driver.label("The list of tags is displayed");
+        driver.findElement(By.id("test:id/Beer")).click();
+        driver.label("Selecting Beer tag");
+        Assert.assertNotNull(driver.findElement(By.id("test:id/tagged-image")));
+        driver.label("The image is displayed");
+        driver.findElement(By.id("test:id/navigate-home")).click();
+        driver.label("The home button is clicked");
+        Assert.assertNotNull(driver.findElement(By.id("test:id/Beer")));
+        driver.label("The home screen is displayed");
     }
 
     @Test
     public void backGoesBackHome() {
-        driver.label("Selecting Beer tag");
-        driver.findElement(By.id("test:id/Beer")).click();
-        Assert.assertNotNull(driver.findElement(By.id("test:id/tagged-image")));
-        driver.label("Clicking the back button");
-        driver.navigate().back();
+        driver.label("The application starts");
         Assert.assertNotNull(driver.findElement(By.id("test:id/Beer")));
+        driver.label("The list of tags is displayed");
+        driver.findElement(By.id("test:id/Beer")).click();
+        driver.label("Selecting Beer tag");
+        Assert.assertNotNull(driver.findElement(By.id("test:id/tagged-image")));
+        driver.label("The image is displayed");
+        driver.navigate().back();
+        driver.label("Clicking the back button");
+        Assert.assertNotNull(driver.findElement(By.id("test:id/Beer")));
+        driver.label("The home screen is displayed");
     }
 }
