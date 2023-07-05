@@ -64,3 +64,5 @@ yarn-error.log
 
 # Maven testing
 target/
+android/app/src/main/assets/
+android/app/src/main/res
