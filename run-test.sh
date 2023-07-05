@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mvn -DskipTests -P prepare-for-upload package
+mvn -DskipTests -P prepare-for-upload clean package
 
 appcenter test run appium \
   --app "gerard-krupa-u0hs/TrainingApp" \

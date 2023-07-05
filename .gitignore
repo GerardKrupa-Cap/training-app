@@ -66,3 +66,4 @@ yarn-error.log
 target/
 android/app/src/main/assets/
 android/app/src/main/res
+/screenshot*.png

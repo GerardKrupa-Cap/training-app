@@ -2,49 +2,58 @@ import com.microsoft.appcenter.appium.EnhancedAndroidDriver;
 import com.microsoft.appcenter.appium.Factory;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.junit.*;
 import org.junit.rules.TestWatcher;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class RemoteAndroidTest {
+
+    private static boolean isInAppCenter() {
+        String appCenterTest = System.getenv("APP_CENTER_TEST");
+        return "1".equals(appCenterTest);
+    }
 
     @Rule
     public TestWatcher watcher = Factory.createWatcher();
 
     private EnhancedAndroidDriver<WebElement> driver;
 
-    private static AppiumDriverLocalService appiumDriverLocalService;
+    private static AppiumDriverLocalService appiumDriverLocalService = null;
 
     @BeforeClass
     public static void setupClass() throws MalformedURLException {
-//        appiumDriverLocalService = new AppiumServiceBuilder()
-//                .usingPort(4723)
-//                .build();
-//        appiumDriverLocalService.start();
 
+        if (!isInAppCenter()) {
+            appiumDriverLocalService = new AppiumServiceBuilder()
+                    .withArgument(() -> "--base-path", "/wd/hub")
+                    .usingPort(4723)
+                    .build();
+            appiumDriverLocalService.start();
+        }
     }
 
     @AfterClass
     public static void tearDownClass() {
-//        if (appiumDriverLocalService != null) {
-//            appiumDriverLocalService.stop();
-//        }
+        if (appiumDriverLocalService != null) {
+            appiumDriverLocalService.stop();
+        }
     }
 
     @Before
     public void setup() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setPlatform(Platform.ANDROID);
         capabilities.setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2);
-        driver = Factory.createAndroidDriver(new URL("http://127.0.0.1:4723"), capabilities);
+        if (!isInAppCenter()) {
+            capabilities.setCapability("app", "./android/app/build/outputs/apk/debug/app-debug.apk");
+        }
+        driver = Factory.createAndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
