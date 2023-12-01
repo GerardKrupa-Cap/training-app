@@ -1,5 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     ext {
         buildToolsVersion = "33.0.0"
@@ -13,9 +12,15 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+          maven {
+                url "https://dl.bintray.com/microsoftazuremobile/SDK"
+            }
     }
     dependencies {
+
         classpath("com.android.tools.build:gradle:7.3.1")
         classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("com.google.gms:google-services:4.3.14")
     }
+    
 }

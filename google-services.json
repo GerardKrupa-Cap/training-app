@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1054897247327",
+    "project_id": "cap-gkrupa-rpw-app",
+    "storage_bucket": "cap-gkrupa-rpw-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054897247327:android:5f3f9a4088bdd91d02f7ea",
+        "android_client_info": {
+          "package_name": "com.trainingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2F97x23wZvDvTPEGPyiD6MXvsjGUxP90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

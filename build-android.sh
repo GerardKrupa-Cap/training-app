@@ -11,4 +11,4 @@ npx react-native bundle \
   --assets-dest ./android/app/src/main/res
 
 cd android
-./gradlew assembleDebug
+./gradlew clean assembleDebug

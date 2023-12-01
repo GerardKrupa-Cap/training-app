@@ -5,7 +5,10 @@ import StandardHeader from '../components/StandardHeader';
 import StandardFooter from '../components/StandardFooter';
 import TagList from '../components/TagList';
 
+
 function Home({navigation}): JSX.Element {
+
+
 
   function selectTag(tag) {
     navigation.navigate('Other', {tag});
@@ -15,8 +18,9 @@ function Home({navigation}): JSX.Element {
     <View style={SharedStyles.screenContainer}>
       <StandardHeader />
       <View style={SharedStyles.body}>
-        <Text style={SharedStyles.h3}>Select a Cat Tag</Text>
+        <Text style={SharedStyles.h3}>Select a Cat Tag !!</Text>
         <TagList baseURL="https://cataas.com/" onSelect={selectTag} />
+
       </View>
       <StandardFooter />
     </View>

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 
 function TaggedItem({baseURL, tag}): JSX.Element {
   const encodedTag = encodeURIComponent(tag);
-  const imageUrl = `${baseURL}c/${encodedTag}`;
+  const imageUrl = `${baseURL}cat/${encodedTag}`;
   return (
     <Image
       testID="test:id/tagged-image"
